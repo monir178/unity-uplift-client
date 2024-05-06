@@ -1,11 +1,10 @@
-import { Button } from "./components/ui/button";
+import MainLayout from "./components/layouts/MainLayout";
 
 function App() {
   return (
-    <>
-      <h1 className="text-5xl">Unity Uplift</h1>
-      <Button>Click</Button>
-    </>
+    <div>
+      <MainLayout />
+    </div>
   );
 }
 
