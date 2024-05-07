@@ -1,4 +1,5 @@
 import App from "@/App";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import HomeIndex from "@/pages/home/HomeIndex";
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "dashboard",
+        element: <DashboardLayout />,
       },
     ],
   },

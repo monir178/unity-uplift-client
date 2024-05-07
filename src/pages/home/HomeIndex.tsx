@@ -1,8 +1,11 @@
+import Container from "@/components/ui/Container";
+import Banner from "./Banner";
+
 const HomeIndex = () => {
   return (
-    <div>
-      <h1>This is Home</h1>
-    </div>
+    <Container className="pt-20 md:pt-24">
+      <Banner />
+    </Container>
   );
 };
 
