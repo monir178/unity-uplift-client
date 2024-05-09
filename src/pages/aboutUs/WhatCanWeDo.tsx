@@ -11,7 +11,7 @@ const WhatCanWeDo = () => {
         />
       </div>
       <div className="md:flex md:flex-col md:justify-center md:order-1">
-        <h4 className="mb-4 text-popover">What We Do:</h4>
+        <h4 className="mb-4 text-popover">What Can We Do:</h4>
         <p className="text-justify text-xl">
           We oversee the supply chain of emergency aid materials, ensuring
           efficient procurement, storage, and distribution to affected areas.
