@@ -15,7 +15,24 @@ const Navbar = () => {
   //   logOut();
   // };
 
-  const animateNav = {
+  const animateNavContainer = {
+    hidden: {
+      opacity: 0,
+      y: -30,
+    },
+
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.9,
+        staggerChildren: 0.5,
+        delayChildren: 0.5,
+      },
+    },
+  };
+
+  const animateNavChildren = {
     hidden: {
       opacity: 0,
     },
@@ -23,48 +40,36 @@ const Navbar = () => {
       opacity: 1,
 
       transition: {
-        duration: 0.6,
-
+        duration: 1,
         ease: "easeInOut",
-      },
-    },
-  };
-
-  const animateNavLink = {
-    hover: {
-      scale: 1.1,
-      originX: 0,
-      transition: {
-        ease: "easeOut",
-        stiffness: 300,
       },
     },
   };
 
   const menuItems = (
     <>
-      <motion.li variants={animateNavLink} whileHover="hover">
+      <motion.li variants={animateNavChildren} whileHover="hover">
         <NavLink
           className="flex items-center hover:underline underline-offset-4"
           to="/">
           Home
         </NavLink>
       </motion.li>
-      <motion.li variants={animateNavLink} whileHover="hover">
+      <motion.li variants={animateNavChildren} whileHover="hover">
         <NavLink
           className="flex items-center hover:underline underline-offset-4"
           to="/relief-goods">
           Relief Goods
         </NavLink>
       </motion.li>
-      <motion.li variants={animateNavLink} whileHover="hover">
+      <motion.li variants={animateNavChildren} whileHover="hover">
         <NavLink
           className="flex items-center hover:underline underline-offset-4"
           to="/dashboard">
           Dashboard
         </NavLink>
       </motion.li>
-      <motion.li variants={animateNavLink} whileHover="hover">
+      <motion.li variants={animateNavChildren} whileHover="hover">
         <Button className="bg-white text-popover rounded-3xl  px-5 max-w-32  border md:border-none border-primary hover:bg-gray-300 font-semibold hover:transition-all text-md">
           <NavLink to="/login">Login</NavLink>
         </Button>
@@ -90,7 +95,7 @@ const Navbar = () => {
   return (
     <header className="h-16 md:h-20 fixed w-full z-[999] bg-popover">
       <motion.nav
-        variants={animateNav}
+        variants={animateNavContainer}
         initial="hidden"
         animate="visible"
         className="max-w-[1300px] px-[20px] mx-auto h-full flex justify-between items-center   text-white">
@@ -101,7 +106,9 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <motion.ul className="space-x-3 md:space-x-6  font-semibold text-base items-center hidden md:flex">
+        <motion.ul
+          variants={animateNavContainer}
+          className="space-x-3 md:space-x-6  font-semibold text-base items-center hidden md:flex">
           {menuItems}
         </motion.ul>
 

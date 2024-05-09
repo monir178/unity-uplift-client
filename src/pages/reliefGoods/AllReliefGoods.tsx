@@ -1,7 +1,7 @@
 const AllReliefGoods = () => {
   return (
     <div>
-      <h1>This is All Relief Goods</h1>
+      <h1>This is All Releif Goods</h1>
     </div>
   );
 };
