@@ -35,7 +35,7 @@ const ReliefGoodsCard = ({ itemName, _id, category, img, amount }) => {
           <p className="text-primary font-bold  text-lg truncate ">{amount}</p>
         </div>
 
-        <Link to="/">
+        <Link to={`/relief-goods/${_id}`}>
           <div className="flex tracking-wider">
             <Button className="rounded-none w-full bg-popover hover:bg-popover-foreground  tracking-widest text-md font-bold">
               VIEW DETAILS

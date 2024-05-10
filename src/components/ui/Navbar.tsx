@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import navLogo from "./../../assets/logo.png";
 
 import { Button } from "../ui/button";
-import { MenuSquare } from "lucide-react";
+import { ChevronRight, MenuSquare } from "lucide-react";
 // import { AuthContext } from "@/contexts/AuthProvider";
 
 const Navbar = () => {
@@ -14,6 +14,10 @@ const Navbar = () => {
   // const handleLogOut = () => {
   //   logOut();
   // };
+
+  const location = useLocation();
+
+  const isDashboardPage = location.pathname.startsWith("/dashboard");
 
   const animateNavContainer = {
     hidden: {
@@ -111,6 +115,14 @@ const Navbar = () => {
           className="space-x-3 md:space-x-6  font-semibold text-base items-center hidden md:flex">
           {menuItems}
         </motion.ul>
+
+        <div className="lg:hidden">
+          {isDashboardPage && (
+            <label htmlFor="dashboard-drawer">
+              <ChevronRight />
+            </label>
+          )}
+        </div>
 
         <div className="md:hidden">
           <MenuSquare

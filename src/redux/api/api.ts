@@ -21,7 +21,14 @@ export const baseApi = createApi({
             }),
             providesTags: ['relief']
         }),
+        getSingleRelief: builder.query({
+            query: (id) => ({
+                url: `/relief-goods/${id}`,
+                method: 'GET',
+            }),
+
+        }),
     })
 })
 
-export const { useGetAllReliefsQuery, useGetLimitedReliefsQuery } = baseApi;
+export const { useGetAllReliefsQuery, useGetLimitedReliefsQuery, useGetSingleReliefQuery } = baseApi;

@@ -4,9 +4,9 @@ import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
-    <div className="max-w-[1440px]  bg-popover w-full mx-auto pb-10 text-white font-thin">
-      <Container>
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 justify-self-end lg:grid-cols-5 py-10 gap-y-16">
+    <>
+      <Container className=" bg-popover w-full mx-auto pb-10 text-white font-thin">
+        <footer className="mt-12 grid grid-cols-2 md:grid-cols-3 justify-self-end lg:grid-cols-5 py-10 gap-y-16">
           <div>
             <div className="flex justify-between items-center">
               <img className="size-24" src={logo} alt="" />
@@ -97,7 +97,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </footer>
         <hr className="my-4 border-gray-500" />
 
         <div className="flex flex-col-reverse md:flex-row justify-between">
@@ -118,7 +118,7 @@ const Footer = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </>
   );
 };
 
