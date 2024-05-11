@@ -3,15 +3,7 @@ import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetSingleReliefQuery } from "@/redux/api/api";
-import { useParams } from "react-router-dom";
-
-export type TTitem = {
-  itemName: string;
-  category: string;
-  img: string;
-  description: string;
-  amount: string;
-};
+import { Link, useParams } from "react-router-dom";
 
 const SingleReliefDetails = () => {
   const { id } = useParams();
@@ -63,9 +55,11 @@ const SingleReliefDetails = () => {
           {singleRelief?.data.description}
         </p>
 
-        <Button className="bg-popover hover:bg-popover-foreground text-lg font-semibold px-10 py-6  tracking-widest">
-          Donate Now
-        </Button>
+        <Link to="/dashboard/create-supply">
+          <Button className="bg-popover hover:bg-popover-foreground text-lg font-semibold px-10 py-6  tracking-widest">
+            Donate Now
+          </Button>
+        </Link>
       </div>
     </Container>
   );

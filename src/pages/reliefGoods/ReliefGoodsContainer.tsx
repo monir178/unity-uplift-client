@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useGetLimitedReliefsQuery } from "@/redux/api/api";
 import CustomLoading from "@/components/ui/CustomLoading";
 import { Link } from "react-router-dom";
+import { TReliefGoods } from "@/types/releifGoods";
 
 const ReliefGoodsContainer = () => {
   const {
@@ -30,7 +31,7 @@ const ReliefGoodsContainer = () => {
         Relief Goods
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-14   ">
-        {limitedReliefs?.data?.map((ReliefItem) => (
+        {limitedReliefs?.data?.map((ReliefItem: TReliefGoods) => (
           <ReliefGoodsCard
             {...ReliefItem}
             key={ReliefItem._id}></ReliefGoodsCard>

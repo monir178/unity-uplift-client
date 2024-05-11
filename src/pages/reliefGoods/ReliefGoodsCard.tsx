@@ -1,10 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { useFadeIn } from "@/hooks/useFadeIn";
+import { TReliefGoods } from "@/types/releifGoods";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ReliefGoodsCard = ({ itemName, _id, category, img, amount }) => {
+const ReliefGoodsCard = ({
+  itemName,
+  _id,
+  category,
+  img,
+  amount,
+}: TReliefGoods) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

@@ -116,10 +116,12 @@ const Navbar = () => {
           {menuItems}
         </motion.ul>
 
-        <div className="lg:hidden">
+        <div className="lg:hidden ">
           {isDashboardPage && (
             <label htmlFor="dashboard-drawer">
-              <ChevronRight />
+              <div className="border-2 rounded-full p-1 ">
+                <ChevronRight />
+              </div>
             </label>
           )}
         </div>

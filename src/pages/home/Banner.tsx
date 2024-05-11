@@ -9,6 +9,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { bannerImages } from "./BannerContent";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const animateBannerContainer = {
   hidden: {
@@ -98,9 +99,11 @@ const BannerSection = () => {
               variants={animateButton}
               initial="hidden"
               animate="visible">
-              <Button className="bg-yellow-500 px-3 py-1 md:px-10 text-[10px]  font-bold hover:bg-yellow-700 md:text-xl h-5 mt-2 md:mt-4 md:py-6">
-                Donate Now
-              </Button>
+              <Link to="/dashboard/create-supply">
+                <Button className="bg-yellow-500 px-3 py-1 md:px-10 text-[10px]  font-bold hover:bg-yellow-700 md:text-xl h-5 mt-2 md:mt-4 md:py-6">
+                  Donate Now
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </motion.div>

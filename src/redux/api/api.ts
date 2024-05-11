@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
     reducerPath: 'baseApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000'
+        baseUrl: 'https://unity-uplift-server-7ivpnz3x6-monir178s-projects.vercel.app/'
     }),
     tagTypes: ['relief'],
     endpoints: (builder) => ({
@@ -26,9 +26,41 @@ export const baseApi = createApi({
                 url: `/relief-goods/${id}`,
                 method: 'GET',
             }),
-
         }),
+        createSupply: builder.mutation({
+            query: (data) => {
+                return {
+                    url: '/dashboard/create-supply',
+                    method: 'POST',
+                    body: data,
+                };
+            },
+            invalidatesTags: ['relief'],
+        }),
+        deleteSupply: builder.mutation({
+            query: (id) => {
+                return {
+                    url: `/dashboard/supply/${id}`,
+                    method: 'DELETE',
+                };
+            },
+            invalidatesTags: ['relief'],
+        }),
+        updateSupply: builder.mutation({
+            query: ({ id, data }) => {
+                return {
+                    url: `/dashboard/supply/${id}`,
+                    method: 'PATCH',
+                    body: data,
+                };
+            },
+            invalidatesTags: ['relief'],
+        }),
+
     })
 })
 
-export const { useGetAllReliefsQuery, useGetLimitedReliefsQuery, useGetSingleReliefQuery } = baseApi;
+export const {
+    useGetAllReliefsQuery, useGetLimitedReliefsQuery, useGetSingleReliefQuery, useCreateSupplyMutation, useDeleteSupplyMutation,
+    useUpdateSupplyMutation,
+} = baseApi;
