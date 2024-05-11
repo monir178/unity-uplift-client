@@ -5,7 +5,6 @@ import {
 } from "@/redux/api/api";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
 
 interface IFormData {
   _id?: string;
@@ -26,29 +25,14 @@ const UpdateSupplyForm = ({ supplyId, closeModal }: TUpdateSupplyFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm<IFormData>();
   const [updateSupply, { isLoading }] = useUpdateSupplyMutation();
 
   const { data: defaultSupplies } = useGetAllReliefsQuery(undefined);
 
-  console.log("form defaultSupplies =>", defaultSupplies.data);
-
-  // for showing initially the previous values of input fields
-  useEffect(() => {
-    if (defaultSupplies) {
-      const supply = defaultSupplies.data.find(
-        (supply: IFormData) => supply?._id === supplyId
-      );
-      if (supply) {
-        setValue("itemName", supply.itemName);
-        setValue("category", supply.category);
-        setValue("amount", supply.amount);
-        setValue("description", supply.description);
-        setValue("img", supply.img);
-      }
-    }
-  }, [defaultSupplies, supplyId, setValue]);
+  const supply = defaultSupplies?.data.find(
+    (supply: IFormData) => supply?._id === supplyId
+  );
 
   const onSubmit: SubmitHandler<IFormData> = async (data) => {
     try {
@@ -82,6 +66,7 @@ const UpdateSupplyForm = ({ supplyId, closeModal }: TUpdateSupplyFormProps) => {
               type="text"
               id="itemName"
               {...register("itemName", { required: true })}
+              defaultValue={supply?.itemName || ""}
             />
             {errors.itemName && (
               <span className="text-red-500">Item Name is required</span>
@@ -95,6 +80,7 @@ const UpdateSupplyForm = ({ supplyId, closeModal }: TUpdateSupplyFormProps) => {
               type="text"
               id="category"
               {...register("category", { required: true })}
+              defaultValue={supply?.category || ""}
             />
             {errors.category && (
               <span className="text-red-500">Category is required</span>
@@ -108,6 +94,7 @@ const UpdateSupplyForm = ({ supplyId, closeModal }: TUpdateSupplyFormProps) => {
               type="text"
               id="amount"
               {...register("amount", { required: true })}
+              defaultValue={supply?.amount || ""}
             />
             {errors.amount && (
               <span className="text-red-500">Amount is required</span>
@@ -120,6 +107,7 @@ const UpdateSupplyForm = ({ supplyId, closeModal }: TUpdateSupplyFormProps) => {
               className="input-field bg-gray-200 border border-popover rounded-md p-2"
               id="description"
               {...register("description", { required: true })}
+              defaultValue={supply?.description || ""}
             />
             {errors.description && (
               <span className="text-red-500">Description is required</span>
@@ -133,6 +121,7 @@ const UpdateSupplyForm = ({ supplyId, closeModal }: TUpdateSupplyFormProps) => {
               type="text"
               id="img"
               {...register("img", { required: true })}
+              defaultValue={supply?.img || ""}
             />
             {errors.img && (
               <span className="text-red-500">Photo URL is required</span>

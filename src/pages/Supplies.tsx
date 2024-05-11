@@ -18,10 +18,13 @@ import { useFadeIn } from "@/hooks/useFadeIn";
 
 import { useState } from "react";
 import UpdateSupplyForm from "./UpdateSupplyForm";
+import ConfirmationModal from "@/components/ui/ConfirmationModal";
 
 const Supplies = () => {
   const [open, setOpen] = useState(false);
   const [selectedSupplyId, setSelectedSupplyId] = useState<string | null>(null);
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
+  const [supplyToDeleteId, setSupplyToDeleteId] = useState<string | null>(null);
 
   const closeModal = () => {
     setOpen(false);
@@ -42,6 +45,7 @@ const Supplies = () => {
     // console.log(id);
     try {
       await deleteSupplyMutation(id);
+      setDeleteConfirmationOpen(false);
     } catch (error) {
       console.log({ error });
     }
@@ -135,7 +139,10 @@ const Supplies = () => {
                         Update
                       </Button>
                       <Button
-                        onClick={() => deleteSupply(item._id)}
+                        onClick={() => {
+                          setSupplyToDeleteId(item._id);
+                          setDeleteConfirmationOpen(true);
+                        }}
                         className="bg-red-500 hover:bg-red-700">
                         Delete
                       </Button>
@@ -159,6 +166,18 @@ const Supplies = () => {
           />
         </DialogContent>
       </Dialog>
+
+      {/* Confirmation Modal */}
+      <ConfirmationModal
+        open={deleteConfirmationOpen}
+        onOpenChange={setDeleteConfirmationOpen}
+        onConfirm={() => {
+          if (supplyToDeleteId !== null) {
+            deleteSupply(supplyToDeleteId);
+            setSupplyToDeleteId(null);
+          }
+        }}
+      />
     </motion.div>
   );
 };

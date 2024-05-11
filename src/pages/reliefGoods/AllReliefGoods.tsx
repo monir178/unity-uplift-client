@@ -3,6 +3,7 @@ import { useGetAllReliefsQuery } from "@/redux/api/api";
 import ReliefGoodsCard from "./ReliefGoodsCard";
 import CustomLoading from "@/components/ui/CustomLoading";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import { TReliefGoods } from "@/types/releifGoods";
 
 const AllReliefGoods = () => {
   useScrollToTop();
@@ -28,7 +29,7 @@ const AllReliefGoods = () => {
     <Container className="pt-24">
       <h1>All Relief Goods</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-14">
-        {allReliefs?.data?.map((ReliefItem) => (
+        {allReliefs?.data?.map((ReliefItem: TReliefGoods) => (
           <ReliefGoodsCard
             {...ReliefItem}
             key={ReliefItem._id}></ReliefGoodsCard>

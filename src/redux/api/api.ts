@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
     reducerPath: 'baseApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://unity-uplift-server-7ivpnz3x6-monir178s-projects.vercel.app/'
+        baseUrl: 'https://unity-uplift-server.vercel.app/'
     }),
     tagTypes: ['relief'],
     endpoints: (builder) => ({

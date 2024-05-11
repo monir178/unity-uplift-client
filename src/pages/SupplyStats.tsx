@@ -39,12 +39,17 @@ const SupplyStats = () => {
               outerRadius={80}
               fill="#8884d8"
               label={({ name, value }) => `${name} (${value} units)`}>
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
+              {data.map(
+                (
+                  _entry, // Placeholder variable for unused parameter
+                  index // eslint-disable-line @typescript-eslint/no-unused-vars
+                ) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                )
+              )}
             </Pie>
             <Tooltip />
           </PieChart>
