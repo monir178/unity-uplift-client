@@ -19,7 +19,11 @@ Welcome to **Unity Uplift**! Our platform provides a comprehensive solution for 
   - [Swiper.js](https://swiperjs.com/)
 
 - **Backend:**
-  - [Firebase](https://firebase.google.com/)
+  - [Express.js](https://expressjs.com/)
+  - [MongoDB](https://www.mongodb.com/)
+
+- **Deployment:**
+  - [Vercel](https://vercel.com/)
 
 - **Build Tool:**
   - [Vite](https://vitejs.dev/)
